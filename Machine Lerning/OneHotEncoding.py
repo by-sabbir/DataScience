@@ -30,16 +30,7 @@ print(df)
 print("One Hot Encoding...")
 X = df['Country'].values
 X = label_enc.fit_transform(X)
-y = df['Purchased'].values
-y = label_enc.fit_transform(y)
 Xenc = OneHotEncoder()
-yenc = OneHotEncoder()
-
 Xenc.fit(X.reshape(-1, 1))
-X = Xenc.transform(X.reshape(-1, 1))
-
-yenc.fit(y.reshape(-1, 1))
-y = yenc.transform(y.reshape(-1, 1))
-print(X, y)
-df_onehot = pd.DataFrame(X)
-print(df_onehot)
+X = Xenc.transform(X.reshape(-1, 1)).toarray()
+print(X)
